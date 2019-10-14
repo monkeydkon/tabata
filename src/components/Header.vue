@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-app-bar flat dark color="primary">
-      <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-btn icon fab class="d-md-none" @click="drawer = !drawer">
+        <v-icon>icon-menu</v-icon>
+      </v-btn>
 
       <v-toolbar-title class="pl-md-0" @click="navigateToHome">Tabata</v-toolbar-title>
 
