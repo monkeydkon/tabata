@@ -1,5 +1,7 @@
 <template>
   <div>
+    <h1 class="body-1 text-center mb-5 grey--text text--darken-2">LOG IN WITH CREDENTIALS</h1>
+
     <v-form @submit.prevent="submit">
       <v-text-field v-model="email" label="email" :error-messages="emailErrors" solo></v-text-field>
 
@@ -25,28 +27,23 @@
       </div>
     </v-form>
 
-    <div class="or">
-      <span></span>
-      OR
-      <span></span>
-    </div>
-
-    <div class="d-flex flex-column">
-      <v-btn color="#385aa5" depressed class="mb-4 white--text">Login with facebook</v-btn>
-      <v-btn color="#dd422d" depressed class="white--text">Login with google</v-btn>
-    </div>
+    <SocialLogin />
   </div>
 </template>
 
 <script>
 import { validationMixin } from "vuelidate";
 import { required, minLength, email } from "vuelidate/lib/validators";
+import SocialLogin from "@/components/SocialLogin";
 
 const loginValidator = function() {
   return !this.loginFailed;
 };
 export default {
   mixins: [validationMixin],
+  components: {
+    SocialLogin
+  },
   data() {
     return {
       email: "",
@@ -101,23 +98,10 @@ export default {
 
 
 <style lang="scss" scoped>
-.or {
-  display: flex;
-  align-items: center;
-  color: #616161;
-  margin-top: 50px;
-  margin-bottom: 50px;
-
-  span {
-    height: 1px;
-    border-top: 1px solid #616161;
-    flex: 1;
-    &:first-child {
-      margin-right: 20px;
-    }
-    &:last-child {
-      margin-left: 20px;
-    }
-  }
+a {
+  transition: opacity 0.2s;
+}
+a:hover {
+  opacity: 0.8;
 }
 </style>

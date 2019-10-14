@@ -1,11 +1,17 @@
 <template>
   <div>
-    <h1>Sign up</h1>
+    <h1 class="body-1 text-center mb-5 grey--text text--darken-2">CREATE ACCOUNT</h1>
+    <SocialLogin />
   </div>
 </template>
 
 <script>
-export default {};
+import SocialLogin from "@/components/SocialLogin";
+export default {
+  components: {
+    SocialLogin
+  }
+};
 </script>
 
 

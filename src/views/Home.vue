@@ -5,12 +5,5 @@
 </template>
 
 <script>
-import axios from "axios";
-export default {
-  // created() {
-  //   axios.get(`${process.env.VUE_APP_BASEURL}/actions/tabatas`).then(res => {
-  //     console.log(res);
-  //   });
-  // }
-};
+export default {};
 </script>
