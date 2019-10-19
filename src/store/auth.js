@@ -16,7 +16,7 @@ export default {
         }
     },
     actions: {
-        login({ commit, dispatch }, credentials) {
+        login({ commit }, credentials) {
             return new Promise((resolve, reject) => {
                 commit('setLoading', true);
                 axios.post(`${process.env.VUE_APP_BASEURL}/auth/login`, { ...credentials })
@@ -28,7 +28,7 @@ export default {
                         commit('setLoading', false);
                         resolve();
                     })
-                    .catch(err => {
+                    .catch(() => {
                         localStorage.removeItem('token');
                         commit('logout');
                         delete axios.defaults.headers.common['Authorization'];
@@ -38,7 +38,7 @@ export default {
             })
         },
         logout({ commit }) {
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 commit('logout');
                 localStorage.removeItem('token');
                 resolve();
