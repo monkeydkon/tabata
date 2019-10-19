@@ -3,22 +3,22 @@
     <h1 class="body-1 text-center mb-5 grey--text text--darken-2">LOG IN WITH CREDENTIALS</h1>
 
     <v-form @submit.prevent="submit">
-      <v-text-field v-model="email" label="email" :error-messages="emailErrors" solo></v-text-field>
+      <v-text-field v-model="email" label="Email" :error-messages="emailErrors" solo></v-text-field>
 
       <v-text-field
         v-model="password"
         type="password"
-        label="password"
+        label="Password"
         :error-messages="passwordErrors"
         solo
       ></v-text-field>
 
-      <div class="d-flex flex-column flex-sm-row align-sm-start mt-sm-3 mt-2">
+      <div class="d-flex flex-column flex-sm-row align-sm-start mt-3">
         <v-btn :loading="$store.state.loading" type="submit" color="primary">Log in</v-btn>
         <div
           class="d-flex flex-column align-center justify-center align-sm-end ml-sm-auto mt-5 mt-sm-0"
         >
-          <a class="body-2 mb-1">Forgot password</a>
+          <a class="body-2 mb-1" @click="$router.push('/auth/reset')">Forgot password</a>
           <p class="body-2 mb-0">
             Dont have an account?
             <a @click="$router.push('/signup')">Sign up</a>
@@ -33,7 +33,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import { required, minLength, email } from "vuelidate/lib/validators";
+import { required } from "vuelidate/lib/validators";
 import SocialLogin from "@/components/SocialLogin";
 
 const loginValidator = function() {

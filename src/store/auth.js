@@ -37,6 +37,20 @@ export default {
                     })
             })
         },
+        signup({ commit }, credentials) {
+            return new Promise((resolve, reject) => {
+                commit('setLoading', true);
+                axios.put(`${process.env.VUE_APP_BASEURL}/auth/signup`, { ...credentials })
+                    .then(() => {
+                        commit('setLoading', false);
+                        resolve();
+                    })
+                    .catch(err => {
+                        commit('setLoading', false);
+                        reject(err);
+                    })
+            })
+        },
         logout({ commit }) {
             return new Promise((resolve) => {
                 commit('logout');
